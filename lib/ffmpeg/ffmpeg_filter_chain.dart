@@ -30,6 +30,17 @@ class FilterChain {
   ///
   /// Example:
   /// [0:0] trim=start='10':end='15' [out_v]
-  String toCli() =>
-      '${inputs.map((stream) => stream.toString()).join(' ')} ${filters.map((filter) => filter.toCli()).join(', ')} ${outputs.join(' ')}';
+  String toCli() {
+    String res = "";
+    if (inputs.isNotEmpty) {
+      res += inputs.map((stream) => stream.toString()).join(' ');
+    }
+    if (filters.isNotEmpty) {
+      res += filters.map((filter) => filter.toCli()).join(',');
+    }
+    if (outputs.isNotEmpty) {
+      res += outputs.join(' ');
+    }
+    return res;
+  }
 }

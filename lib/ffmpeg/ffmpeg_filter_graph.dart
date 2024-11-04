@@ -14,6 +14,6 @@ class FilterGraph {
 
   /// Returns this filter graph in a form that can be run in a CLI command.
   String toCli({indent = ''}) {
-    return chains.map((chain) => indent + chain.toCli()).join('; \n');
+    return "'${chains.map((chain) => indent + chain.toCli()).join(';')}'";
   }
 }
